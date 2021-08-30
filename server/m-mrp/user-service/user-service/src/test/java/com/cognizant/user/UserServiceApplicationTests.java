@@ -1,11 +1,8 @@
 package com.cognizant.user;
 
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@SuppressWarnings("deprecation")
-@RunWith(MockitoJUnitRunner.class)
+@SpringBootTest
 class UserServiceApplicationTests {
 
 

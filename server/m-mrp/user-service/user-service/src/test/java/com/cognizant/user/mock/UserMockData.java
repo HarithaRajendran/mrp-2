@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.cognizant.user.entity.Address;
 import com.cognizant.user.entity.Dependent;
+import com.cognizant.user.entity.Login;
 import com.cognizant.user.entity.User;
 import com.cognizant.user.entity.UserDetail;
 
@@ -59,4 +60,19 @@ public class UserMockData {
 		return userDetail;
 	}
 
+	public Login getLoginMockData() {
+		Login login = new Login();
+		login.setUsername("haritha@gmail.com");
+		login.setPassword("Haritha@123");
+		
+		return login;
+	}
+	
+	public Login getLoginMockData2() {
+		Login login = new Login();
+		login.setUsername("haritha123@gmail.com");
+		login.setPassword("Haritha123@123");
+		
+		return login;
+	}
 }

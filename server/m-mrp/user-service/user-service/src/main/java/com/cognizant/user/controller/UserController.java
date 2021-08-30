@@ -41,7 +41,6 @@ public class UserController {
 
 		if (user.isEmpty()) {
 			return new ResponseEntity<>("User Not found", HttpStatus.OK);
-
 		}
 
 		return new ResponseEntity<>(user, HttpStatus.OK);
