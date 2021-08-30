@@ -1,0 +1,14 @@
+.verify-member{
+    font-size: 14px;
+    color: blue;
+    margin-top: 36px;
+}
+
+a{
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    margin-left: 14px;
+}

@@ -1,0 +1,56 @@
+<div class="row"> 
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div class="header">
+            Login
+          </div>
+        </div>
+      </div>
+      <div class="row"></div>
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+        {{errorMessage}}
+      </div>
+      <div class="row"></div>
+    
+      <form [formGroup]="signInForm" (submit)="onSubmitClick()">
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" [ngStyle]="{'border': username.touched && username.errors ? '1px solid red' : ''}" 
+                formControlName="username"  autofocus />
+          </div>
+        </div>
+        <div class="row error-message" *ngIf="username.touched && username.dirty && username.errors">
+          <div *ngIf="username.errors.required">Username is required</div>
+          <div *ngIf="username.errors.email">Invalid Username</div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 form-group">
+            <label>Password</label>
+            <div class="password">
+              <input type="password" class="form-control" [ngStyle]="{'border': password.touched && password.errors ? '1px solid red' : ''}" 
+                formControlName="password"/>
+            </div>
+          </div>
+        </div>
+        <div class="row error-message" *ngIf="password.touched && password.dirty && password.errors">
+          <div *ngIf="password.errors.required">Password is required</div>
+        </div>
+        <div class="row">
+          <div class="col-md-5 text-right">
+            <button type="submit" class="btn btn-primary ">Login</button>
+          </div>
+          <div class="col-md-6">
+            <a routerLink="/sign-up">New User? Click here to register</a>
+          </div>
+        </div>
+      </form>
+      </div>
+  </div>
+</div>
+  
+  
+  

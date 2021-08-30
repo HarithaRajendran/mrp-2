@@ -1,0 +1,104 @@
+<div class="row"> 
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="header">
+              Claim Submission Form
+            </div>
+          </div>
+        </div>
+        <div class="row"></div>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+          {{errorMessage}}
+        </div>
+        <div class="row">
+            <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                {{successMessage}}
+              </div>
+        </div>
+      
+        <form [formGroup]="claimForm" (submit)="onSubmitClick()">
+          <div class="row">
+            <div class="col-md-9 form-group">
+              <label>Member Id</label>
+              <input type="text" class="form-control" [ngStyle]="{'border': memberId.touched && memberId.errors ? '1px solid red' : ''}" 
+                  formControlName="memberId" />
+            </div>
+            <div class="col-md-3 verify-member"><a (click)="verifyMemberId()">click here</a></div>
+          </div>
+          <!-- <div class="row error-message" *ngIf="memberId.touched && username.dirty && username.errors">
+            <div *ngIf="username.errors.required">Username is required</div>
+            <div *ngIf="username.errors.email">Invalid Username</div>
+          </div> -->
+          <div class="row" *ngIf="isValidMemberId">
+            <div class="col-md-12 form-group">
+              <label>Name</label>
+                <input type="text" class="form-control" [ngStyle]="{'border': name.touched && name.errors ? '1px solid red' : ''}" 
+                  formControlName="name"/>
+            </div>
+          </div>
+          <!-- <div class="row error-message" *ngIf="password.touched && password.dirty && password.errors">
+            <div *ngIf="password.errors.required">Password is required</div>
+          </div> -->
+
+          <div class="row" *ngIf="isValidMemberId">
+            <div class="col-md-12 form-group">
+              <label>Date Of Birth</label>
+                <input type="text" class="form-control" [ngStyle]="{'border': dateOfBirth.touched && dateOfBirth.errors ? '1px solid red' : ''}" 
+                  formControlName="dateOfBirth"/>
+            </div>
+          </div>
+          <!-- <div class="row error-message" *ngIf="password.touched && password.dirty && password.errors">
+            <div *ngIf="password.errors.required">Password is required</div>
+          </div> -->
+
+          <div class="row" *ngIf="isValidMemberId">
+            <div class="col-md-12 form-group">
+              <label>Date Of Admission</label>
+                <input type="date" class="form-control" [ngStyle]="{'border': dateOfAdmission.touched && dateOfAdmission.errors ? '1px solid red' : ''}" 
+                  formControlName="dateOfAdmission"/>
+            </div>
+          </div>
+          <div class="row error-message" *ngIf="dateOfAdmission.touched && dateOfAdmission.dirty && dateOfAdmission.errors">
+            <div *ngIf="dateOfAdmission.errors.required">Admission Date is required</div>
+          </div>
+
+          <div class="row" *ngIf="isValidMemberId">
+            <div class="col-md-12 form-group">
+              <label>Date Of Discharge</label>
+                <input type="date" class="form-control" 
+                    [ngStyle]="{'border': dateOfDischarge.touched && dateOfDischarge.errors ? '1px solid red' : ''}" 
+                  formControlName="dateOfDischarge"/>
+            </div>
+          </div>
+          <div class="row error-message" *ngIf="dateOfDischarge.touched && dateOfDischarge.dirty && dateOfDischarge.errors">
+            <div *ngIf="dateOfDischarge.errors.required">Discharge Date is required</div>
+          </div>
+
+          <div class="row" *ngIf="isValidMemberId">
+            <div class="col-md-12 form-group">
+              <label>Bill Amount ( In Rupees )</label>
+                <input type="text" class="form-control" 
+                    [ngStyle]="{'border': billAmount.touched && billAmount.errors ? '1px solid red' : ''}" 
+                  formControlName="billAmount"/>
+            </div>
+          </div>
+          <div class="row error-message" *ngIf="billAmount.touched && billAmount.dirty && billAmount.errors">
+            <div *ngIf="billAmount.errors.required">Amount is required</div>
+          </div>
+
+
+          <div class="row" *ngIf="isValidMemberId">
+            <div class="col-md-5 text-right">
+              <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+          </div>
+        </form>
+        </div>
+    </div>
+  </div>
+    
+    
+    

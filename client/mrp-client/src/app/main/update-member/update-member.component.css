@@ -1,0 +1,37 @@
+.error-message {
+    color: red;
+    margin-left: 14px;
+}
+
+input{
+    border: 1px solid black;
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.selectpicker{
+    margin-left: 10px;
+    padding: 4px;
+    width: inherit;
+}
+
+.date-border{
+    display: flex;
+    border: 1px solid black;
+    
+}
+
+.date-style{
+    border:none;
+}
+
+.move-right{
+    margin-left: 10px;
+}
+
+.move-down{
+    margin-top: 26px;
+}

@@ -1,0 +1,178 @@
+<div class="row"> 
+    <div class="col-md-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="header">
+              Register
+            </div>
+          </div>
+        </div>
+        <div class="row"></div>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+          {{errorMessage}}
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="successMessage">
+            {{successMessage}}
+          </div>
+        <div class="row"></div>
+      
+        <form [formGroup]="signUpForm" (submit)="onSubmitClick()">
+          <div class="row">
+            <div class="col-md-5 form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" [ngStyle]="{'border': name.touched && name.errors ? '1px solid red' : ''}" 
+                  formControlName="name"  autofocus />
+               <div class="row error-message" *ngIf="name.touched && name.dirty && name.errors">
+                <div *ngIf="name.errors.required">Name is required</div>
+                <div *ngIf="name.errors.pattern">Invalid Name</div>
+              </div>  
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5 form-group">
+              <label>Address</label>
+              <input type="text" class="form-control" [ngStyle]="{'border': address.touched && address.errors ? '1px solid red' : ''}" 
+                  formControlName="address"  autofocus />
+               <div class="row error-message" *ngIf="address.touched && address.dirty && address.errors">
+                <div *ngIf="address.errors.required">Address is required</div>
+              </div>  
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-5 form-group">
+              <label>Date Of Birth</label>
+              <input type="date" class="form-control" 
+                [ngStyle]="{'border': dateOfBirth.touched && dateOfBirth.errors ? '1px solid red' : ''}" 
+                [min]="minDate"
+                [max]="maxDate"
+                formControlName="dateOfBirth"  autofocus />
+                  <!-- <ngb-datepicker #dp 
+                [(ngModel)]="model"
+                (navigate)="date = $event.next"
+                [minDate]="{year: today.year, month: today.month - 2, day: 1}"
+                [maxDate]="{year: today.year, month: today.month, day: today.day}"
+                ></ngb-datepicker> -->
+
+               <div class="row error-message" *ngIf="dateOfBirth.touched && dateOfBirth.dirty && dateOfBirth.errors">
+                <div *ngIf="dateOfBirth.errors.required">DOB is required</div>
+              </div>  
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5 form-group">
+              <label>Country</label>
+              <!-- <input type="text" class="form-control" [ngStyle]="{'border': country.touched && country.errors ? '1px solid red' : ''}" 
+                  formControlName="country"  autofocus /> -->
+
+                  <select class="selectpicker" formControlName="country" (change)="selectCountry()">
+                    <option [ngValue]="null" disabled selected>Select Country</option>
+                    <option [ngValue]="countryValue.country_name" *ngFor="let countryValue of countries">{{ countryValue.country_name }}</option>
+                  </select>
+                
+               <div class="row error-message" *ngIf="country.touched && country.dirty && country.errors">
+                <div *ngIf="country.errors.required">Country is required</div>
+              </div>  
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5 form-group">
+              <label>Contact Number</label>
+              <input type="text" class="form-control" [ngStyle]="{'border': contactNumber.touched && contactNumber.errors ? '1px solid red' : ''}" 
+                  formControlName="contactNumber"  autofocus />
+               <div class="row error-message" *ngIf="contactNumber.touched && contactNumber.dirty && contactNumber.errors">
+                <div *ngIf="contactNumber.errors.required">Contact Number is required</div>
+                <div *ngIf="contactNumber.errors.pattern">Invalid Contact Number</div>
+              </div>  
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5 form-group">
+              <label>State</label>
+              <!-- <input type="text" class="form-control" [ngStyle]="{'border': state.touched && state.errors ? '1px solid red' : ''}" 
+                  formControlName="state"  autofocus /> -->
+
+                  <select class="selectpicker" formControlName="state">
+                    <option [ngValue]="null" disabled selected>Select State</option>
+                    <option [ngValue]="state" *ngFor="let state of states">{{ state }}</option>
+                  </select>
+
+               <div class="row error-message" *ngIf="state.touched && state.dirty && state.errors">
+                <div *ngIf="state.errors.required">State is required</div>
+              </div>  
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5 form-group">
+              <label>Pan Number</label>
+              <input type="text" class="form-control" [ngStyle]="{'border': panNumber.touched && panNumber.errors ? '1px solid red' : ''}" 
+                  formControlName="panNumber"  autofocus />
+               <div class="row error-message" *ngIf="panNumber.touched && panNumber.dirty && panNumber.errors">
+                <div *ngIf="panNumber.errors.required">Pan Number is required</div>
+                <div *ngIf="panNumber.errors.pattern">Invalid PAN Number</div>
+              </div>  
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5 form-group">
+              <label>City</label>
+              <input type="text" class="form-control" [ngStyle]="{'border': city.touched && city.errors ? '1px solid red' : ''}" 
+                  formControlName="city"  autofocus />
+               <div class="row error-message" *ngIf="city.touched && city.dirty && city.errors">
+                <div *ngIf="city.errors.required">City is required</div>
+                <!-- <div *ngIf="username.errors.email">Invalid Username</div> -->
+              </div>  
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-5 form-group">
+              <label>Email Id</label>
+              <input type="text" class="form-control" [ngStyle]="{'border': email.touched && email.errors ? '1px solid red' : ''}" 
+                  formControlName="email"  autofocus />
+               <div class="row error-message" *ngIf="email.touched && email.dirty && email.errors">
+                <div *ngIf="email.errors.required">Email Id is required</div>
+                <div *ngIf="email.errors.email">Invalid Email Id</div>
+              </div>  
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5 form-group">
+              <label>Pincode</label>
+              <input type="text" class="form-control" [ngStyle]="{'border': pincode.touched && pincode.errors ? '1px solid red' : ''}" 
+                  formControlName="pincode"  autofocus />
+               <div class="row error-message" *ngIf="pincode.touched && pincode.dirty && pincode.errors">
+                <div *ngIf="pincode.errors.required">Pincode is required</div>
+                <!-- <div *ngIf="username.errors.email">Invalid Username</div> -->
+              </div>  
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-5 form-group">
+              <label>Create Password</label>
+              <input type="password" class="form-control" [ngStyle]="{'border': password.touched && password.errors ? '1px solid red' : ''}" 
+                  formControlName="password"  autofocus />
+               <div class="row error-message" *ngIf="password.touched && password.dirty && password.errors">
+                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.pattern">Password should contain alphabets, symbol and digits</div>
+              </div>  
+            </div>
+          </div>
+
+
+          <!-- <div class="row error-message" *ngIf="password.touched && password.dirty && password.errors">
+            <div *ngIf="password.errors.required">Password is required</div>
+          </div> -->
+          <div class="row">
+            <div class="col-md-5 text-right">
+              <button type="submit" class="btn btn-primary ">Register</button>
+            </div>
+            <div class="col-md-6">
+              <a routerLink="/sign-in">Already registered? Click here to login</a>
+            </div>
+          </div>
+        </form>
+        </div>
+    </div>
+  </div>  
