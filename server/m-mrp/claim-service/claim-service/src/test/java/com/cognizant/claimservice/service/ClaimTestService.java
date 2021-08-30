@@ -1,6 +1,5 @@
 package com.cognizant.claimservice.service;
 
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.junit.Assert;
