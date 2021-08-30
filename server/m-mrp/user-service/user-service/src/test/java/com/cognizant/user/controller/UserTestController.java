@@ -20,7 +20,9 @@ import org.mockito.quality.Strictness;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.cognizant.user.entity.Dependent;
 import com.cognizant.user.entity.Login;
+import com.cognizant.user.entity.MemberDetail;
 import com.cognizant.user.entity.User;
 import com.cognizant.user.entity.UserDetail;
 import com.cognizant.user.exception.DataMissingException;
@@ -248,13 +250,51 @@ class UserTestController {
 			Assert.assertNotNull(responseEntity);
 		}
 		
-		ResponseEntity<?> responseEntity = userController.getUserById(id);
-		Assert.assertNotNull(responseEntity);
-
 	}
 
 	@Test
 	void testCheckUserClaimDetail() {
-		
+		String id="R-190";
+		MemberDetail memberDetail = new MemberDetail();
+
+		if (id.startsWith("R")) {
+			
+			Optional<User> user = Optional.ofNullable(userMockData.getUserMockData().get(0));
+			
+			Mockito.when(userService.getUserById(id))
+			.thenReturn(user);
+			
+			if (user.isPresent()) {
+				memberDetail.setMemberId(user.get().getId());
+				memberDetail.setName(user.get().getName());
+				memberDetail.setDateOfBirth(user.get().getDateOfBirth());
+			}
+			
+			MemberDetail responseEntity = userController.checkUserClaimDetail(id);
+			Assert.assertNotNull(responseEntity);
+		}
+	}
+	
+	@Test
+	void test1CheckUserClaimDetail() {
+		String id="D-111";
+		MemberDetail memberDetail = new MemberDetail();
+
+		if (id.startsWith("D")) {
+			
+			Optional<Dependent> dependent = Optional.ofNullable(userMockData.getDependentMockData());
+			
+			Mockito.when(userService.getDependentById(id))
+			.thenReturn(dependent);
+			
+			if (dependent.isPresent()) {
+				memberDetail.setMemberId(dependent.get().getId());
+				memberDetail.setName(dependent.get().getName());
+				memberDetail.setDateOfBirth(dependent.get().getDateOfBirth());
+			}
+			
+			MemberDetail responseEntity = userController.checkUserClaimDetail(id);
+			Assert.assertNotNull(responseEntity);
+		}
 	}
 }
