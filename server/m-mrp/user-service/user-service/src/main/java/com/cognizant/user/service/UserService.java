@@ -12,7 +12,6 @@ import com.cognizant.user.entity.Dependent;
 import com.cognizant.user.entity.User;
 import com.cognizant.user.entity.UserDetail;
 import com.cognizant.user.exception.UserNotFoundException;
-import com.cognizant.user.repository.DependentDao;
 import com.cognizant.user.repository.DependentRepository;
 import com.cognizant.user.repository.UserDao;
 import com.cognizant.user.repository.UserRepository;
@@ -28,9 +27,6 @@ public class UserService {
 
 	@Autowired
 	private UserDao userDao;
-
-	@Autowired
-	private DependentDao dependentDao;
 
 	public Optional<User> getUserById(String id) {
 		return userRepository.findById(id);
@@ -71,7 +67,8 @@ public class UserService {
 		List<Dependent> dependents = dependentRepository.findByUserId(user.getId());
 
 		userDetail.setUser(user);
-		if (dependents.isEmpty()) {
+		
+		if(!dependents.isEmpty()) {
 			userDetail.setDependents(dependents);
 		}
 
@@ -82,12 +79,9 @@ public class UserService {
 		user.setId("R-" + Math.round(Math.random() * 1000));
 		return userRepository.save(user);
 	}
-
-	public User checkUserForClaimSubmit(String memberId, String userId) {
-		return userDao.checkUserForClaimSubmit(memberId, userId);
+	
+	public List<User> findAllUser(){
+		return userRepository.findAll();
 	}
 
-	public Dependent checkDependentForClaimSubmit(String memberId, String userId) {
-		return dependentDao.getDependentDetail(memberId, userId);
-	}
 }

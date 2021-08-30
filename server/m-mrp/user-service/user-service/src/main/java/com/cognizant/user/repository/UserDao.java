@@ -19,7 +19,4 @@ public class UserDao {
 				User.class);
 	}
 
-	public User checkUserForClaimSubmit(String memberId, String userId) {
-		return mongoOperation.findOne(new Query(Criteria.where("id").is(memberId).and("id").is(userId)), User.class);
-	}
 }
