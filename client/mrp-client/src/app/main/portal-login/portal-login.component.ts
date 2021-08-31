@@ -29,13 +29,18 @@ export class PortalLoginComponent implements OnInit {
 
   onSubmitClick(){
     if(this.signInForm.valid){
-      let result = this.authenticationService.signIn(this.signInForm.value);
-      if(result){
-        this.errorMessage = '';
-        this.router.navigate(['/profile']);
-      } else {
-        this.errorMessage = 'User Not Found';
-      }
+      this.authenticationService.signIn(this.signInForm.value).subscribe((value) =>{
+        console.log(value);
+        // if(true){
+        //   this.errorMessage = '';
+        //    localStorage.setItem('username', value.username);
+        //   localStorage.setItem('password', value.password);
+        //   this.authenticationService.changeAuthenticateStatus(true);
+        //   this.router.navigate(['/profile']);
+        // } else {
+        //   this.errorMessage = 'User Not Found';
+        // }
+      });
     } else{
       this.errorMessage = 'Invalid Credentials';
     }

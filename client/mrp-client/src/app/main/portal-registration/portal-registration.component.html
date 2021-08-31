@@ -31,10 +31,10 @@
             <div class="col-md-2"></div>
             <div class="col-md-5 form-group">
               <label>Address</label>
-              <input type="text" class="form-control" [ngStyle]="{'border': address.touched && address.errors ? '1px solid red' : ''}" 
-                  formControlName="address"  autofocus />
-               <div class="row error-message" *ngIf="address.touched && address.dirty && address.errors">
-                <div *ngIf="address.errors.required">Address is required</div>
+              <input type="text" class="form-control" [ngStyle]="{'border': addressLine.touched && addressLine.errors ? '1px solid red' : ''}" 
+                  formControlName="addressLine"  autofocus />
+               <div class="row error-message" *ngIf="addressLine.touched && addressLine.dirty && addressLine.errors">
+                <div *ngIf="addressLine.errors.required">Address is required</div>
               </div>  
             </div>
           </div>
@@ -79,11 +79,11 @@
           <div class="row">
             <div class="col-md-5 form-group">
               <label>Contact Number</label>
-              <input type="text" class="form-control" [ngStyle]="{'border': contactNumber.touched && contactNumber.errors ? '1px solid red' : ''}" 
-                  formControlName="contactNumber"  autofocus />
-               <div class="row error-message" *ngIf="contactNumber.touched && contactNumber.dirty && contactNumber.errors">
-                <div *ngIf="contactNumber.errors.required">Contact Number is required</div>
-                <div *ngIf="contactNumber.errors.pattern">Invalid Contact Number</div>
+              <input type="text" class="form-control" [ngStyle]="{'border': contactDetail.touched && contactDetail.errors ? '1px solid red' : ''}" 
+                  formControlName="contactDetail"  autofocus />
+               <div class="row error-message" *ngIf="contactDetail.touched && contactDetail.dirty && contactDetail.errors">
+                <div *ngIf="contactDetail.errors.required">Contact Number is required</div>
+                <div *ngIf="contactDetail.errors.pattern">Invalid Contact Number</div>
               </div>  
             </div>
             <div class="col-md-2"></div>
@@ -106,11 +106,11 @@
           <div class="row">
             <div class="col-md-5 form-group">
               <label>Pan Number</label>
-              <input type="text" class="form-control" [ngStyle]="{'border': panNumber.touched && panNumber.errors ? '1px solid red' : ''}" 
-                  formControlName="panNumber"  autofocus />
-               <div class="row error-message" *ngIf="panNumber.touched && panNumber.dirty && panNumber.errors">
-                <div *ngIf="panNumber.errors.required">Pan Number is required</div>
-                <div *ngIf="panNumber.errors.pattern">Invalid PAN Number</div>
+              <input type="text" class="form-control" [ngStyle]="{'border': panCardNumber.touched && panCardNumber.errors ? '1px solid red' : ''}" 
+                  formControlName="panCardNumber"  autofocus />
+               <div class="row error-message" *ngIf="panCardNumber.touched && panCardNumber.dirty && panCardNumber.errors">
+                <div *ngIf="panCardNumber.errors.required">Pan Number is required</div>
+                <div *ngIf="panCardNumber.errors.pattern">Invalid PAN Number</div>
               </div>  
             </div>
             <div class="col-md-2"></div>
@@ -139,10 +139,10 @@
             <div class="col-md-2"></div>
             <div class="col-md-5 form-group">
               <label>Pincode</label>
-              <input type="text" class="form-control" [ngStyle]="{'border': pincode.touched && pincode.errors ? '1px solid red' : ''}" 
-                  formControlName="pincode"  autofocus />
-               <div class="row error-message" *ngIf="pincode.touched && pincode.dirty && pincode.errors">
-                <div *ngIf="pincode.errors.required">Pincode is required</div>
+              <input type="text" class="form-control" [ngStyle]="{'border': pinCode.touched && pinCode.errors ? '1px solid red' : ''}" 
+                  formControlName="pinCode"  autofocus />
+               <div class="row error-message" *ngIf="pinCode.touched && pinCode.dirty && pinCode.errors">
+                <div *ngIf="pinCode.errors.required">Pincode is required</div>
                 <!-- <div *ngIf="username.errors.email">Invalid Username</div> -->
               </div>  
             </div>

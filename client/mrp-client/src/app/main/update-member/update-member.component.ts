@@ -5,7 +5,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from '../service/authentication/authentication.service';
 import { CountryAndStateService } from '../service/country-and-state/country-and-state.service';
 import * as moment from 'moment';
-import { DependentDetailI } from '../interface/dependent-detail';
+import { Dependent } from '../interface/dependent';
 
 @Component({
   selector: 'app-update-member',
