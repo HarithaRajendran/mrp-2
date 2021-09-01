@@ -1,5 +1,7 @@
 package com.cognizant.user.controller;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -56,7 +58,9 @@ public class UserController {
 		}
 
 		userService.register(user);
-		return new ResponseEntity<>("User created successfully.", HttpStatus.OK);
+		Map<String, String> message = new HashMap<>();
+		message.put("message", "User Created successfully");
+		return new ResponseEntity<>(message, HttpStatus.OK);
 	}
 
 	@PutMapping("/update/{id}")

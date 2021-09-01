@@ -1,7 +1,7 @@
 import { Dependent } from "./dependent";
 
 export interface User {
-    id?: string;
+    id?: string | null;
     name?: string;
     address?: Address;
     dateOfBirth?: string;

@@ -43,21 +43,21 @@ export class ClaimsFormComponent implements OnInit {
   get dependentId() { return this.claimForm.controls['dependentId']};
 
   verifyMemberId(){
-    this.authenticationService.userDetails.forEach((memberDetails) => {
-      this.memberIds.push(memberDetails.memberId);
-      this.Members.push(memberDetails);
-      memberDetails.dependentDetails?.forEach((dependent) =>{
-        this.memberIds.push(dependent.memberId);
-        this.Members.push(dependent);
-      });
-    });
+    // this.authenticationService.userDetails.forEach((memberDetails) => {
+    //   this.memberIds.push(memberDetails.memberId);
+    //   this.Members.push(memberDetails);
+    //   memberDetails.dependentDetails?.forEach((dependent) =>{
+    //     this.memberIds.push(dependent.memberId);
+    //     this.Members.push(dependent);
+    //   });
+    // });
 
     let selectedMemberId = this.memberIds.filter((mem) => mem === this.memberId.value);
 
-    let claimSubmittedDetail = this.claimsService.claimsDetails.filter((claim) => claim.memberId === this.memberId.value)
+    // let claimSubmittedDetail = this.claimsService.claimsDetails.filter((claim) => claim.memberId === this.memberId.value)
 
     if(selectedMemberId.length > 0) {
-      if (claimSubmittedDetail.length === 0) {
+      // if (claimSubmittedDetail.length === 0) {
         this.errorMessage = '';
         this.isValidMemberId = true;
         let claimMember = this.Members.filter((member) => member?.memberId === selectedMemberId[0]);
@@ -71,10 +71,10 @@ export class ClaimsFormComponent implements OnInit {
 
       }
 
-    } else {
+    // } else {
       this.errorMessage = 'Member Not Found';
       this.successMessage = '';
-    }
+    // }
   }
 
   onSubmitClick(){

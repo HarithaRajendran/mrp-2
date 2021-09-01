@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserDetail } from '../interface/user-detail';
 import { AuthenticationService } from '../service/authentication/authentication.service';
 
 @Component({
@@ -29,17 +30,15 @@ export class PortalLoginComponent implements OnInit {
 
   onSubmitClick(){
     if(this.signInForm.valid){
-      this.authenticationService.signIn(this.signInForm.value).subscribe((value) =>{
-        console.log(value);
-        // if(true){
-        //   this.errorMessage = '';
-        //    localStorage.setItem('username', value.username);
-        //   localStorage.setItem('password', value.password);
-        //   this.authenticationService.changeAuthenticateStatus(true);
-        //   this.router.navigate(['/profile']);
-        // } else {
-        //   this.errorMessage = 'User Not Found';
-        // }
+      this.authenticationService.signIn(this.signInForm.value).subscribe((value: UserDetail | Object) =>{
+        if(value.hasOwnProperty("user")){
+          this.errorMessage = '';
+          this.authenticationService.currentUser = value;
+          this.authenticationService.changeAuthenticateStatus(true);
+          this.router.navigate(['/profile']);
+        } else{
+          this.errorMessage = 'User not found';
+        }
       });
     } else{
       this.errorMessage = 'Invalid Credentials';

@@ -40,7 +40,9 @@ public class ClaimController {
 			return new ResponseEntity<>("Claim not saved.", HttpStatus.INTERNAL_SERVER_ERROR);
 		} else {
 			log.info("Claim created successfully...");
-			return new ResponseEntity<>("Claim successfully created.", HttpStatus.OK);
+			Map<String, String> message = new HashMap<>();
+			message.put("message", "Claim successfully created.");
+			return new ResponseEntity<>(message, HttpStatus.OK);
 		}
 	}
 

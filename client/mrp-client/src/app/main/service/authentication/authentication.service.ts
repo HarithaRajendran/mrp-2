@@ -34,6 +34,8 @@ export class AuthenticationService {
   //     ]
   //   }
   // ]
+
+  currentUser: UserDetail = {};
   
   private isUserAuthenticated = new BehaviorSubject<boolean>(false);
   castUser = this.isUserAuthenticated.asObservable();
@@ -61,7 +63,7 @@ export class AuthenticationService {
     return this.httpClient.post("http://localhost:8082/api/user/register", userValue);
   }
 
-  updateMember(id: string, userDetail: UserDetail){
+  updateMember(id: string | undefined | null, userDetail: UserDetail){
     return this.httpClient.put(`http://localhost:8082/api/user/update/${id}`, userDetail);
   }
   

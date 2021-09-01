@@ -74,6 +74,7 @@ export class PortalRegistrationComponent implements OnInit {
   onSubmitClick(){
     if(this.signUpForm.valid){
       this.registerDetail = {
+        id: null,
         name: this.name.value,
         dateOfBirth: this.dateOfBirth.value,
         address: {
@@ -90,13 +91,12 @@ export class PortalRegistrationComponent implements OnInit {
       };
       this.authenticationService.registerMember(this.registerDetail)
         .subscribe((value)=>{
-          console.log(value);
+          debugger;
+            this.signUpForm.reset();
+            this.successMessage = 'Member Registered Successfully!';
+            this.errorMessage = '';
         });
-      // if(result){
-      //   this.signUpForm.reset();
-      //   this.successMessage = 'Member Registered Successfully!';
-      //   this.errorMessage = '';
-      // } else {
+      
       //   this.errorMessage = 'Member Already Exist.';
       //   this.successMessage = '';
       // }

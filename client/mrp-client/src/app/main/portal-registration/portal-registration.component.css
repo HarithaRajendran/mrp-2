@@ -5,6 +5,7 @@
 
 input{
     border: 1px solid black;
+    color: black;
 }
 
 .header {
@@ -13,8 +14,10 @@ input{
 }
 
 .selectpicker{
-    margin-left: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
     padding: 4px;
+    height: 38px;
     width: inherit;
 }
 
