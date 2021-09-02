@@ -26,7 +26,7 @@ public class ClaimService {
 	}
 
 	public MemberDetail checkMemberClaim(String id) {
-		return restTemplate.getForObject("http://USER-SERVICE/api/user/check/claim/" + id, MemberDetail.class);
+		return restTemplate.getForObject("http://localhost:8082/api/user/check/claim/" + id, MemberDetail.class);
 	}
 
 	public Optional<Claim> getClaimByMemberId(String memberId) throws Exception {
