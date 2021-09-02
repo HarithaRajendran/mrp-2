@@ -41,6 +41,10 @@ public class UserService {
 		List<Dependent> dependents = new ArrayList<>();
 
 		User user = userRepository.save(userDetail.getUser());
+		
+		if(userDetail.getIdsToDetele().size() > 0) {
+			deleteDependent(userDetail.getIdsToDetele());
+		}
 
 		for (Dependent dependent : userDetail.getDependents()) {
 			if (dependent.getId() == null) {
@@ -84,4 +88,7 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
+	public void deleteDependent(List<String> ids) {
+		dependentRepository.deleteAllById(ids);
+	}
 }

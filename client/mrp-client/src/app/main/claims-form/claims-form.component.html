@@ -39,9 +39,6 @@
                   formControlName="name"/>
             </div>
           </div>
-          <!-- <div class="row error-message" *ngIf="password.touched && password.dirty && password.errors">
-            <div *ngIf="password.errors.required">Password is required</div>
-          </div> -->
 
           <div class="row" *ngIf="isValidMemberId">
             <div class="col-md-12 form-group">
@@ -50,9 +47,6 @@
                   formControlName="dateOfBirth"/>
             </div>
           </div>
-          <!-- <div class="row error-message" *ngIf="password.touched && password.dirty && password.errors">
-            <div *ngIf="password.errors.required">Password is required</div>
-          </div> -->
 
           <div class="row" *ngIf="isValidMemberId">
             <div class="col-md-12 form-group">
@@ -81,12 +75,12 @@
             <div class="col-md-12 form-group">
               <label>Bill Amount ( In Rupees )</label>
                 <input type="text" class="form-control" 
-                    [ngStyle]="{'border': billAmount.touched && billAmount.errors ? '1px solid red' : ''}" 
-                  formControlName="billAmount"/>
+                    [ngStyle]="{'border': totalBillAmount.touched && totalBillAmount.errors ? '1px solid red' : ''}" 
+                  formControlName="totalBillAmount"/>
             </div>
           </div>
-          <div class="row error-message" *ngIf="billAmount.touched && billAmount.dirty && billAmount.errors">
-            <div *ngIf="billAmount.errors.required">Amount is required</div>
+          <div class="row error-message" *ngIf="totalBillAmount.touched && totalBillAmount.dirty && totalBillAmount.errors">
+            <div *ngIf="totalBillAmount.errors.required">Amount is required</div>
           </div>
 
 

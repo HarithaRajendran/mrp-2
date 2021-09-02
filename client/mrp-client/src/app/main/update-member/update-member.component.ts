@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from '../service/authentication/authentication.service';
 import { CountryAndStateService } from '../service/country-and-state/country-and-state.service';
 import * as moment from 'moment';
@@ -37,7 +36,6 @@ export class UpdateMemberComponent implements OnInit {
 
 
   constructor(private authenticationService: AuthenticationService,
-    private router: Router,
     private fb: FormBuilder,
     private countryAndStateService: CountryAndStateService) { }
 
@@ -57,7 +55,6 @@ export class UpdateMemberComponent implements OnInit {
   get panCardNumber() { return this.updateForm.controls['panCardNumber'] };
   get email() { return this.updateForm.controls['email'] };
   get password() { return this.updateForm.controls['password'] };
-  // get dependentDetails() { return (this.updateForm.controls['dependentDetails'] as FormArray);}
 
   getDependentControl() {
     return (<FormArray>this.updateForm.get('dependentDetails')).controls;
@@ -104,7 +101,7 @@ export class UpdateMemberComponent implements OnInit {
     debugger;
     this.dependentDetails = this.updateForm.get('dependentDetails') as FormArray;
     this.dependentDetails.push(this.fb.group({
-      id: [''],
+      id: [null],
       name: [''],
       dateOfBirth: [''],
       userId: ['']
@@ -122,9 +119,19 @@ export class UpdateMemberComponent implements OnInit {
     }));
   }
 
+  idsToRemove: string[] = [];
+
   remove(i: number) {
-    this.greaterId = this.greaterId - 1;
+    this.idsToRemove.push(this.dependentDetails.at(i).get('id')?.value);
+    if(this.dependentDetails.at(i).get('id')?.value){
+      this.idsToRemove.push(this.dependentDetails.at(i).get('id')?.value);
+    }
     this.dependentDetails.removeAt(i);
+  }
+
+  onCancelClick(){
+    this.idsToRemove = [];
+    this.setFormValue();
   }
 
   userDetailToUpdate: UserDetail = {};
@@ -148,15 +155,15 @@ export class UpdateMemberComponent implements OnInit {
           email: this.email.value,
           password: this.password.value
         },
-        dependents: this.dependentDetails.value
-
+        dependents: this.dependentDetails.value,
+        idsToDetele: this.idsToRemove
       }
       this.authenticationService.updateMember(this.userDetailToUpdate?.user?.id, this.userDetailToUpdate)
         .subscribe((value: UserDetail) => {
           debugger;
-          this.setFormValue();
-          this.currentUser = value;
           this.authenticationService.currentUser = value;
+          this.currentUser = value;
+          this.setFormValue();
           this.successMessage = 'Updated Successfully!';
           this.errorMessage = '';
         });

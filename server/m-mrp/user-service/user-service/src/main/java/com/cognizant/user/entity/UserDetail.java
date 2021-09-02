@@ -12,4 +12,6 @@ public class UserDetail {
 	private User user;
 
 	private List<Dependent> dependents;
+	
+	private List<String> idsToDetele;
 }

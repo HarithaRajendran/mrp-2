@@ -52,10 +52,14 @@ public class UserMockData {
 		UserDetail userDetail = new UserDetail();
 		List<Dependent> dependents = new ArrayList<>();
 		
+		List<String> idsToDelete = new ArrayList<>();
+		idsToDelete.add("D-890");
+		
 		dependents.add(getDependentMockData());
 		
 		userDetail.setUser(getUserMockData().get(0));
 		userDetail.setDependents(dependents);
+		userDetail.setIdsToDetele(idsToDelete);
 		
 		return userDetail;
 	}
@@ -110,10 +114,14 @@ public class UserMockData {
 	public UserDetail getNewUserDetail() {
 		UserDetail userDetail = new UserDetail();
 		
+		List<String> ids = new ArrayList<>();
+		ids.add("D-109");
+		
 		List<Dependent> dependents = new ArrayList<>();
 		dependents.add(getNewDependentMockData());
 		userDetail.setUser(getUserMockData().get(0));
 		userDetail.setDependents(dependents);
+		userDetail.setIdsToDetele(ids);
 		
 		return userDetail;
 	}
